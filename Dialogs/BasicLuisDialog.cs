@@ -27,7 +27,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
         // Go to https://luis.ai and create a new intent, then train/publish your luis app.
         // Finally replace "Gretting" with the name of your newly created intent in the following handler
-        [LuisIntent("Greeting")]
+        [LuisIntent("Saludar")]
         public async Task GreetingIntent(IDialogContext context, LuisResult result)
         {
             await this.ShowLuisResult(context, result);
@@ -49,8 +49,8 @@ namespace Microsoft.Bot.Sample.LuisBot
         {
             switch (result.Intents[0].Intent)
             {
-                case "Greeting":
-                    await context.PostAsync($"Hola, bienvenido");
+                case "Saludar":
+                    await context.PostAsync("Hola ! que gusto verte por aca ¿cuentame en que te puedo ayudar?");
                     break;
                 default:
                     await context.PostAsync($"You have reached {result.Intents[0].Intent}. You said: {result.Query}");
